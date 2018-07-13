@@ -17,8 +17,8 @@ def parse_key_name(path):
 
 def is_delete_keys(request, path, bucket_name):
     return (
-        path == u'/' + bucket_name + u'/?delete' or
-        path == u'/' + bucket_name + u'?delete' or
-        (path == u'/' + bucket_name and
-         getattr(request, "query_string", "") == "delete")
+        path == u'/' + bucket_name + u'/?delete' or path == u'/' + bucket_name + u'/?delete=' or
+        path == u'/' + bucket_name + u'?delete' or path == u'/' + bucket_name + u'?delete=' or
+        (path == u'/' + bucket_name and getattr(request, "query_string", "") == "delete") or
+        (path == u'/' + bucket_name and getattr(request, "query_string", "") == "delete=")
     )
